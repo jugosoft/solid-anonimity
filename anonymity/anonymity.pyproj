@@ -44,6 +44,9 @@
     <Folder Include="anonymity\templates\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="anonymity\static\scripts\webrtc.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="requirements.txt" />
     <Content Include="anonymity\static\content\bootstrap.css" />
     <Content Include="anonymity\static\content\bootstrap.min.css" />
