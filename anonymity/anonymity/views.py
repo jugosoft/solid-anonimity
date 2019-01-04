@@ -7,6 +7,7 @@ from flask import render_template
 from flask import request
 from anonymity import app
 from anonymity import utils
+from anonymity import portscan
 
 checklist = {"lang" : True,
              "header" : True,
@@ -35,10 +36,12 @@ http_headers = ["HTTP_VIA",                 "HTTP_X_FORWARDED_FOR",
 @app.route('/')
 @app.route('/home')
 def home():
+
     proxies = utils.map(request.headers, http_headers)
     print(request.headers.environ.get("HTTP_USER_AGENT"))  
     print("Are proxies enabled - " + str(proxies))
     print(request.headers)
+    #portscan.scan(request.headers.environ.get("REMOTE_ADDR"))
     return render_template(
         'index.html',
         using_proxies = proxies,
