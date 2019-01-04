@@ -8,8 +8,8 @@ from flask import request
 from anonymity import app
 from anonymity import utils
 
-checklist = {"lang" : False,
-             "header" : False,
+checklist = {"lang" : True,
+             "header" : True,
              "opened_ports" : False,
              "host_name" : False,
              "timestamp" : False,
@@ -19,8 +19,8 @@ checklist = {"lang" : False,
              "doublesided_ping" : False,
              "provider" : False,
              "vpn" : False,
-             "webrtc" : False,
-             "user_agent" : False
+             "webrtc" : True,
+             "user_agent" : True
     }
 
 http_headers = ["HTTP_VIA",                 "HTTP_X_FORWARDED_FOR", 
@@ -35,12 +35,15 @@ http_headers = ["HTTP_VIA",                 "HTTP_X_FORWARDED_FOR",
 @app.route('/')
 @app.route('/home')
 def home():
-    str_tmp = request.headers
-    proxies = utils.map(str_tmp, http_headers)
+    proxies = utils.map(request.headers, http_headers)
+    print(request.headers.environ.get("HTTP_USER_AGENT"))  
     print("Are proxies enabled - " + str(proxies))
-    print(str_tmp)
+    print(request.headers)
     return render_template(
         'index.html',
+        using_proxies = proxies,
+        user_agent = request.headers.environ.get("HTTP_USER_AGENT"),      
+        language = request.headers.environ.get("HTTP_ACCEPT_LANGUAGE"),
         title='Home Page',
         year=datetime.now().year,
     )

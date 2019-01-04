@@ -31,7 +31,7 @@ function findIP(onNewIP) {
 }
 
 var ul = document.createElement('ul');
-ul.textContent = 'Your IPs are: '
+ul.textContent = 'Your IPs are: ';
 document.body.appendChild(ul);
 
 function addIP(ip) {
