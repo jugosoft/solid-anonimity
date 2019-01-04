@@ -1,12 +1,11 @@
 """
-This script runs the anonymity application using a development server.
+Routes and views for the flask application.
 """
 
-from os import environ
-from anonymity import app
 from datetime import datetime
 from flask import render_template
 from flask import request
+from anonymity import app
 from anonymity import utils
 from anonymity import portscan
 
@@ -72,10 +71,3 @@ def about():
         year=datetime.now().year,
         message='Your application description page.'
     )
-
-app = Flask(__name__)
-
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'this_should_be_configured')
-
-if __name__ == '__main__':
-    app.run(debug=True)
