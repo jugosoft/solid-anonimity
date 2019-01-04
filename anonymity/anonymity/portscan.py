@@ -23,6 +23,9 @@ def scan(host):
         s = socket.socket()
         s.settimeout(1)
 
+        if port > 445:
+            break
+
         print("#" + str(counter) + " port " + str(port) + " is checking...")
         counter = counter + 1
 

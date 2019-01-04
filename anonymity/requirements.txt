@@ -1,5 +1,9 @@
-pytFlask==0.10.1
-Flask-Admin==1.0.8
-MarkupSafe==0.23
-WTForms==2.0.1
-Werkzeug==0.9.6
+Click==7.0
+Flask==1.0.2
+itsdangerous==1.1.0
+Jinja2==2.10
+MarkupSafe==1.1.0
+numpy==1.14.3
+pygame==1.9.4
+virtualenv==16.1.0
+Werkzeug==0.14.1

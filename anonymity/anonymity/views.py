@@ -36,17 +36,18 @@ http_headers = ["HTTP_VIA",                 "HTTP_X_FORWARDED_FOR",
 @app.route('/')
 @app.route('/home')
 def home():
-
-    proxies = utils.map(request.headers, http_headers)
+    request.headers.environ["X_FORWARDED_FOR"] = "54.39.138.153"
+    proxies = utils.map(request.headers.environ, http_headers)
     print(request.headers.environ.get("HTTP_USER_AGENT"))  
     print("Are proxies enabled - " + str(proxies))
     print(request.headers)
-    #portscan.scan(request.headers.environ.get("REMOTE_ADDR"))
+    opened_ports = portscan.scan(request.headers.environ.get("REMOTE_ADDR"))
     return render_template(
         'index.html',
         using_proxies = proxies,
         user_agent = request.headers.environ.get("HTTP_USER_AGENT"),      
         language = request.headers.environ.get("HTTP_ACCEPT_LANGUAGE"),
+        opened_ports = opened_ports,
         title='Home Page',
         year=datetime.now().year,
     )

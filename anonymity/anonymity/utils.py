@@ -2,11 +2,12 @@ class utils(object):
     """description of class"""
     pass
 
-def map(string : str, substrings : list):
+def map(dictionary, substrings):
     """
         Custom mapper for proxies
     """
+    proxy = False
     for elem in substrings:
-        if elem in string:
-            return True
-        return False
+        if dictionary.get(elem) is not None:
+            proxy = True
+    return proxy
