@@ -11,8 +11,6 @@ app = Flask(__name__)
 
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'this_should_be_configured')
 
-
-
 checklist = {"lang" : True,
              "header" : True,
              "opened_ports" : False,

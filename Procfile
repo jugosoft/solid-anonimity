@@ -1,1 +1,1 @@
-web: gunicorn app:anonymity
+web: gunicorn app:app
