@@ -1,7 +1,11 @@
-"""
-Routes and views for the flask application.
-"""
-
+import os
+from flask import Flask, render_template, request, redirect, url_for
+from datetime import datetime
+from flask import render_template
+from flask import request
+from anonymity import app
+from anonymity import utils
+from anonymity import portscan
 
 
 checklist = {"lang" : True,
