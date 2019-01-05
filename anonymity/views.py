@@ -9,13 +9,13 @@ from anonymity import dnsleak
 #to do list
 checklist = {"lang" : True,
              "header" : True,
-             "opened_ports" : False,
+             "opened_ports" : True,
              "timestamp" : False,
              "tor" : False,
              "flash" : False,
              "dns_leak" : True,
              "doublesided_ping" : False,
-             "provider" : False,
+             "provider" : True,
              "vpn" : False,
              "webrtc" : True,
              "user_agent" : True
