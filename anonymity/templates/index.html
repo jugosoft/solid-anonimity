@@ -21,11 +21,43 @@
     </div>    
  </div>
 <div class="row">
-    <h2>Data</h2>
-    <p> Using proxies = {{ using_proxies }}</p>
-    <p> User agent = {{ user_agent }}</p>
-    <p> Language = {{ language }}</p>
-    <p> Opened ports = {{ opened_ports }}</p>
+    <h2>Basic Info</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col"> Information about you...</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for elem in dns %}
+            <tr>
+                <td>{{ elem }}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td>
+                    Using proxies : {{ using_proxies }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    User agent : {{ user_agent }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Opened ports = {{ opened_ports }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Language = {{ language }}
+                </td>
+            </tr>
+
+        </tbody>
+    </table>    
 </div>
 
-{% endblock %}
+
+    {% endblock %}

@@ -8,15 +8,15 @@ from flask import request
 from anonymity import app
 from anonymity import utils
 from anonymity import portscan
+from anonymity import dnsleak
 
 checklist = {"lang" : True,
              "header" : True,
              "opened_ports" : False,
-             "host_name" : False,
              "timestamp" : False,
              "tor" : False,
              "flash" : False,
-             "dns_leak" : False,
+             "dns_leak" : True,
              "doublesided_ping" : False,
              "provider" : False,
              "vpn" : False,
@@ -41,14 +41,16 @@ def home():
     print(request.headers.environ.get("HTTP_USER_AGENT"))  
     print("Are proxies enabled - " + str(proxies))
     print(request.headers)
+    dns_info = dnsleak.get_dns_leak()
     opened_ports = portscan.scan(request.headers.environ.get("REMOTE_ADDR"))
     return render_template(
         'index.html',
         using_proxies = proxies,
         user_agent = request.headers.environ.get("HTTP_USER_AGENT"),      
         language = request.headers.environ.get("HTTP_ACCEPT_LANGUAGE"),
+        dns = dns_info,
         opened_ports = opened_ports,
-        title='Home Page',
+        title='Anonymity checker',
         year=datetime.now().year,
     )
 

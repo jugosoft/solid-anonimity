@@ -28,6 +28,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="anonymity\dnsleak.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="anonymity\portscan.py">
       <SubType>Code</SubType>
     </Compile>
