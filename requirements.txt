@@ -4,15 +4,9 @@ gunicorn==19.9.0
 itsdangerous
 Jinja2
 MarkupSafe
-numpy==1.14.3
-pygame==1.9.4
 virtualenv==16.1.0
 Werkzeug
-certifi
-chardet
-idna
 pip
-pkg_resources
 requests
 setuptools
 urllib3
