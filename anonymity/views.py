@@ -1,7 +1,3 @@
-"""
-Routes and views for the flask application.
-"""
-
 from datetime import datetime
 from flask import render_template
 from flask import request
@@ -10,6 +6,7 @@ from anonymity import utils
 from anonymity import portscan
 from anonymity import dnsleak
 
+#to do list
 checklist = {"lang" : True,
              "header" : True,
              "opened_ports" : False,
@@ -32,17 +29,28 @@ http_headers = ["HTTP_VIA",                 "HTTP_X_FORWARDED_FOR",
                 "FORWARDED", "CLIENT_IP",   "FORWARDED_FOR_IP",
                 "HTTP_PROXY_CONNECTION",    "X_FORWARDED_FOR"]
 
-
 @app.route('/')
 @app.route('/home')
 def home():
+    #testing proxies detection
+    #detects usage proxies according to the HTTP headers 
+    #watch %http_headers% variable
     request.headers.environ["X_FORWARDED_FOR"] = "54.39.138.153"
     proxies = utils.map(request.headers.environ, http_headers)
     print(request.headers.environ.get("HTTP_USER_AGENT"))  
     print("Are proxies enabled - " + str(proxies))
+
+    #just for development usability
     print(request.headers)
+
+    #getting info about dns leaks
     dns_info = dnsleak.get_dns_leak()
-    opened_ports = portscan.scan(request.headers.environ.get("REMOTE_ADDR"))
+
+    #False means to check the most popular ports
+    #but True provides long and complete check for whole ports range
+    opened_ports = portscan.scan(request.headers.environ.get("REMOTE_ADDR"), False)
+
+    #renders page with current data
     return render_template(
         'index.html',
         using_proxies = proxies,
