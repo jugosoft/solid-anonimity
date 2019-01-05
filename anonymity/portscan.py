@@ -6,7 +6,7 @@ class portscan:
 
 def scan(host):
 
-    mas = [20, 21, 22, 23, 25, 42, 43, 53, 67, 69, 
+    mas = [20, 21, 22, 228, 23, 25, 42, 43, 53, 67, 69, 
            80, 110, 115, 123, 137, 138, 139, 143, 
            161, 179, 443, 445, 514, 515, 993, 995, 
            1080, 1194, 1433, 1702, 1723, 3128, 3268, 
@@ -22,10 +22,7 @@ def scan(host):
     for port in mas:
         s = socket.socket()
         s.settimeout(1)
-
-        if port > 445:
-            break
-
+               
         print("#" + str(counter) + " port " + str(port) + " is checking...")
         counter = counter + 1
 
