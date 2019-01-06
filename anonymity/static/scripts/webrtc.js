@@ -30,15 +30,11 @@ function findIP(onNewIP) {
   };
 }
 
-var ul = document.createElement('ul');
-ul.textContent = 'Your IPs are: ';
-document.body.appendChild(ul);
+var elem = document.getElementById('rtc');
+elem.innerHTML = 'Your IPs are: ';
 
 function addIP(ip) {
-  console.log('got ip: ', ip);
-  var li = document.createElement('li');
-  li.textContent = ip;
-  ul.appendChild(li);
+    elem.textContent += ip + ' | ';    
 }
 
 findIP(addIP);

@@ -48,11 +48,13 @@ def home():
     dns_info = dnsleak.get_dns_leak()
 
     #about using tor
+    #dns_info[1] : second element in this list
+    #is IP address of user
     used_tor = tor.check(dns_info[1])
 
     #False means to check the most popular ports
     #but True provides long and complete check for whole ports range
-    opened_ports = portscan.scan(request.headers.environ.get("REMOTE_ADDR"), False)
+    #opened_ports = portscan.scan(request.headers.environ.get("REMOTE_ADDR"), False)
 
     #renders page with current data
     return render_template(
@@ -62,7 +64,7 @@ def home():
         language = request.headers.environ.get("HTTP_ACCEPT_LANGUAGE"),
         dns = dns_info,
         tor = used_tor,
-        opened_ports = opened_ports,
+        opened_ports = 1, #opened_ports,
         title='Anonymity checker',
         year=datetime.now().year,
     )
