@@ -31,20 +31,24 @@ def get_dns_leak():
     parsed_data = json.loads(data)
 
     resulting_info.append("Your IP:")
-    print(resulting_info[len(resulting_info) - 1])
+    #print(resulting_info[len(resulting_info) - 1])
 
     for dns_server in parsed_data:
         if dns_server['type'] == "ip":
             if dns_server['country_name']:
                 if dns_server['asn']:
-                    resulting_info.append(dns_server['ip'] + " [" + dns_server['country_name'] + ", " + dns_server['asn'] + "]")
-                    print(resulting_info[len(resulting_info) - 1])
+                    resulting_info.append(dns_server['ip'])
+                    #print(resulting_info[len(resulting_info) - 1])
+                    resulting_info.append("[" + dns_server['country_name'] + ", " + dns_server['asn'] + "]")
+                    #print(resulting_info[len(resulting_info) - 1])
                 else:
-                    resulting_info.append(dns_server['ip'] + " ["+dns_server['country_name'] + "]")
-                    print(resulting_info[len(resulting_info) - 1])
+                    resulting_info.append(dns_server['ip'])
+                    #print(resulting_info[len(resulting_info) - 1])
+                    resulting_info.append("["+dns_server['country_name'] + "]")
+                    #print(resulting_info[len(resulting_info) - 1])
             else:
                 resulting_info.append(dns_server['ip'])
-                print(resulting_info[len(resulting_info) - 1])
+                #print(resulting_info[len(resulting_info) - 1])
 
     servers = 0
 
@@ -54,30 +58,30 @@ def get_dns_leak():
 
     if servers == 0:
         resulting_info.append("No DNS servers found")
-        print(resulting_info[len(resulting_info) - 1])
+        #print(resulting_info[len(resulting_info) - 1])
     else:
         resulting_info.append("You use " + str(servers) + " DNS servers:")
-        print(resulting_info[len(resulting_info) - 1])
+        #print(resulting_info[len(resulting_info) - 1])
         for dns_server in parsed_data:
             if dns_server['type'] == "dns":
                 if dns_server['country_name']:
                     if dns_server['asn']:
                         resulting_info.append(dns_server['ip'] + " [" + dns_server['country_name'] + ", "+dns_server['asn'] + "]")
-                        print(resulting_info[len(resulting_info) - 1])
+                        #print(resulting_info[len(resulting_info) - 1])
                     else:
                         resulting_info.append(dns_server['ip'] + " ["+dns_server['country_name'] + "]")
-                        print(resulting_info[len(resulting_info) - 1])
+                        #print(resulting_info[len(resulting_info) - 1])
                 else:
                     resulting_info.append(dns_server['ip'])
-                    print(resulting_info[len(resulting_info) - 1])
+                    #print(resulting_info[len(resulting_info) - 1])
     
     resulting_info.append("Conclusion:")
-    print(resulting_info[len(resulting_info) - 1])
+    #print(resulting_info[len(resulting_info) - 1])
 
     for dns_server in parsed_data:
         if dns_server['type'] == "conclusion":
             if dns_server['ip']:
                 resulting_info.append(dns_server['ip'])
-                print(resulting_info[len(resulting_info) - 1])
+                #print(resulting_info[len(resulting_info) - 1])
 
     return resulting_info

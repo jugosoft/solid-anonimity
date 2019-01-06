@@ -8,3 +8,5 @@ numpy==1.14.3
 pygame==1.9.4
 virtualenv==16.1.0
 Werkzeug==0.14.1
+csv
+urllib2

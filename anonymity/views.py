@@ -5,13 +5,14 @@ from anonymity import app
 from anonymity import utils
 from anonymity import portscan
 from anonymity import dnsleak
+from anonymity import tor
 
 #to do list
 checklist = {"lang" : True,
              "header" : True,
              "opened_ports" : True,
              "timestamp" : False,
-             "tor" : False,
+             "tor" : True,
              "flash" : False,
              "dns_leak" : True,
              "doublesided_ping" : False,
@@ -46,6 +47,9 @@ def home():
     #getting info about dns leaks
     dns_info = dnsleak.get_dns_leak()
 
+    #about using tor
+    used_tor = tor.check(dns_info[1])
+
     #False means to check the most popular ports
     #but True provides long and complete check for whole ports range
     opened_ports = portscan.scan(request.headers.environ.get("REMOTE_ADDR"), False)
@@ -57,6 +61,7 @@ def home():
         user_agent = request.headers.environ.get("HTTP_USER_AGENT"),      
         language = request.headers.environ.get("HTTP_ACCEPT_LANGUAGE"),
         dns = dns_info,
+        tor = used_tor,
         opened_ports = opened_ports,
         title='Anonymity checker',
         year=datetime.now().year,
@@ -70,14 +75,4 @@ def contact():
         title='Contact',
         year=datetime.now().year,
         message='Your contact page.'
-    )
-
-@app.route('/about')
-def about():
-    """Renders the about page."""
-    return render_template(
-        'about.html',
-        title='About',
-        year=datetime.now().year,
-        message='Your application description page.'
     )
