@@ -31,10 +31,11 @@ function findIP(onNewIP) {
 }
 
 var elem = document.getElementById('rtc');
-elem.innerHTML = 'Your IPs are: ';
+elem.innerHTML = 'WebRTC leaks followin IPs: ';
 
 function addIP(ip) {
     elem.textContent += ip + ' | ';    
+    //alert(ip);    
 }
 
 findIP(addIP);

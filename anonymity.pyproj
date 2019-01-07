@@ -34,6 +34,9 @@
     <Compile Include="anonymity\portscan.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="anonymity\static\scripts\fp.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="anonymity\tor.py">
       <SubType>Code</SubType>
     </Compile>
@@ -67,21 +70,8 @@
     <Content Include="anonymity\static\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="anonymity\static\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="anonymity\static\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="anonymity\static\scripts\bootstrap.js" />
     <Content Include="anonymity\static\scripts\bootstrap.min.js" />
-    <Content Include="anonymity\static\scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="anonymity\static\scripts\jquery-1.10.2.js" />
-    <Content Include="anonymity\static\scripts\jquery-1.10.2.min.js" />
-    <Content Include="anonymity\static\scripts\jquery-1.10.2.min.map" />
-    <Content Include="anonymity\static\scripts\jquery.validate-vsdoc.js" />
-    <Content Include="anonymity\static\scripts\jquery.validate.js" />
-    <Content Include="anonymity\static\scripts\jquery.validate.min.js" />
-    <Content Include="anonymity\static\scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="anonymity\static\scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="anonymity\static\scripts\modernizr-2.6.2.js" />
-    <Content Include="anonymity\static\scripts\respond.js" />
-    <Content Include="anonymity\static\scripts\respond.min.js" />
-    <Content Include="anonymity\static\scripts\_references.js" />
     <Content Include="anonymity\templates\contact.html" />
     <Content Include="anonymity\templates\index.html" />
     <Content Include="anonymity\templates\layout.html" />
