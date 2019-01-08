@@ -61,6 +61,7 @@
     </Content>
     <Content Include="anonymity\static\scripts\geo.js" />
     <Content Include="anonymity\static\scripts\cfp.js" />
+    <Content Include="anonymity\static\scripts\webgl.js" />
     <Content Include="anonymity\static\scripts\webrtc.js">
       <SubType>Code</SubType>
     </Content>

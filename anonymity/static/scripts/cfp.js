@@ -16,12 +16,11 @@ String.prototype.hashCode = function () {
 var canvas = document.createElement("canvas");
 var context = canvas.getContext("2d");
 
-//context.font = "18pt Arial";
 context.fillText("Do I know you? \ud83d\ude03", 20, 20);
 
 var dataURL = canvas.toDataURL("image/png").substr("data:image/png;base64,".length);
 //document.getElementById("cfp").innerHTML = dataURL;
-document.getElementById("cfp").innerHTML += "Hash: " + dataURL.hashCode();
+document.getElementById("cfp").innerHTML += "Canvas Fingerprint: " + dataURL.hashCode();
 document.body.appendChild(canvas);
 //hide IT
 canvas.style.display = 'none';
