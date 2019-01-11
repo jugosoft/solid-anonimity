@@ -1,4 +1,5 @@
 from datetime import datetime
+import anonymity
 from flask import render_template
 from flask import request
 from anonymity import app
@@ -7,21 +8,8 @@ from anonymity import portscan
 from anonymity import dnsleak
 from anonymity import tor
 
-#to do list
-checklist = {"lang" : True,
-             "header" : True,
-             "opened_ports" : True,
-             "timestamp" : False,
-             "tor" : True,
-             "flash" : False,
-             "dns_leak" : True,
-             "doublesided_ping" : False,
-             "provider" : True,
-             "vpn" : False,
-             "webrtc" : True,
-             "user_agent" : True
-    }
-
+#list of http headers
+#may be a reason for proxies detection
 http_headers = ["HTTP_VIA",                 "HTTP_X_FORWARDED_FOR", 
                 "HTTP_FORWARDED_FOR",       "HTTP_X_FORWARDED", 
                 "HTTP_FORWARDED",           "HTTP_CLIENT_IP", 
@@ -56,6 +44,9 @@ def home():
     #but True provides long and complete check for whole ports range
     #opened_ports = portscan.scan(request.headers.environ.get("REMOTE_ADDR"), False)
 
+    #tracing path to the client :-)
+    utils.trace(dns_info[1])
+    
     #renders page with current data
     return render_template(
         'index.html',
