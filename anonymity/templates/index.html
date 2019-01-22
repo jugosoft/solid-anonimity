@@ -64,7 +64,7 @@
                     <!--Here checks status of JS-->
                     JS is not working now... yet...
                     <script>
-                        document.getElementById("js").innerHTML = "It is really working! Stop it!";
+                        document.getElementById("js").innerHTML = "JS is really working! Stop it!";
                     </script>
                 </td>
             </tr>
@@ -100,6 +100,24 @@
                     <!--Here comes WebGL detection-->
                     <span>Leaks WebGL are</span>
                     <span id="webgl">impossible...</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>Here goes your browser's extensions:</span>
+                    <p id="228"></p>
+                    <script type="text/javascript">
+
+                        var x = navigator.plugins.length;
+
+                        // store the total no of plugin stored
+                        var txt = "There are " + x + " plugins installed: <br/>";                        
+
+                        for (var i = 0; i < x; i++)
+                            txt += i + ". " + navigator.plugins[i].name + "<br/>";
+
+                        document.getElementById("228").innerHTML = txt;
+                    </script>
                 </td>
             </tr>
 

@@ -45,7 +45,7 @@ def home():
     #opened_ports = portscan.scan(request.headers.environ.get("REMOTE_ADDR"), False)
 
     #tracing path to the client :-)
-    utils.trace(dns_info[1])
+    #utils.trace(dns_info[1])
     
     #renders page with current data
     return render_template(
