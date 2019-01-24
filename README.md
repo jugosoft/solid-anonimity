@@ -18,6 +18,7 @@ h1 #solid-anonimity
 - Canvas Fingerprint;
 - Утечки WebGL;
 - Список плагинов браузера;
+- Проверка наличия Адблока;
 
 В планах:
 + windows media;
