@@ -63,6 +63,7 @@
     <Content Include="anonymity\static\scripts\ext.js" />
     <Content Include="anonymity\static\scripts\geo.js" />
     <Content Include="anonymity\static\scripts\cfp.js" />
+    <Content Include="anonymity\static\scripts\sl.js" />
     <Content Include="anonymity\static\scripts\webgl.js" />
     <Content Include="anonymity\static\scripts\webrtc.js">
       <SubType>Code</SubType>
@@ -80,7 +81,6 @@
     <Content Include="anonymity\templates\contact.html" />
     <Content Include="anonymity\templates\index.html" />
     <Content Include="anonymity\templates\layout.html" />
-    <Content Include="Wham Rap! %28Enjoy What You Do %29 - Wham!.m4a" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
