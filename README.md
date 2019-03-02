@@ -19,12 +19,20 @@ h1 #solid-anonimity
 - Утечки WebGL;
 - Список плагинов браузера;
 - Проверка наличия Адблока;
-
+- Проверка silverlight;
+- Adobe PDF and other pdfreaders;
+- Залогиненость в следующих социальных сетях и сервисах:
+    - Facebook;
+    - Twitter;
+    - Skype;
+    - Google's services;
+    - Github;
+    - Bitbucket;
+    - ВКонтакте;
+=========================================================
 В планах:
 + windows media;
 + realplayer version;
 + quicktime plug-in;
-+ adobe pdf;
 + realplayer plugin;
-+ adobe acrobat;
-+ silverlight;
+=========================================================
