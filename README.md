@@ -29,11 +29,10 @@ h1 #solid-anonimity
     - Github;
     - Bitbucket;
     - ВКонтакте;
- =========================================================
+
 
 В планах:
 + windows media;
 + realplayer version;
 + quicktime plug-in;
 + realplayer plugin;
-=========================================================
