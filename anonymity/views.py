@@ -7,6 +7,7 @@ from anonymity import utils
 from anonymity import portscan
 from anonymity import dnsleak
 from anonymity import tor
+from anonymity import blacklisted as bl
 
 #list of http headers
 #may be a reason for proxies detection
@@ -46,6 +47,9 @@ def home():
 
     #tracing path to the client :-)
     #utils.trace(dns_info[1])
+
+    #get info about blacklisting status of IP
+    bl.start(dns_info[1])
     
     #renders page with current data
     return render_template(
