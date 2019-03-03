@@ -18,7 +18,9 @@ function a(self) {
         if (!result)
             try {
                 result = new ActiveXObject(versions[i]);
-            } catch (e) { };
+            } catch (e) {
+                console.log(e);
+            }
     }
 
     return !!result;

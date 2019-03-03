@@ -134,19 +134,43 @@
                     </div>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <div id="wmd">
+                        Windows Media Player 
+                    </div>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>
 
-<script src="../static/scripts/webrtc.js"></script>
-<script src="../static/scripts/dnt.js"></script>
-<script src="../static/scripts/fp.js"></script>
-<script src="../static/scripts/geo.js"></script>
-<script src="../static/scripts/cfp.js"></script>
-<script src="../static/scripts/webgl.js"></script>
-<script src="../static/scripts/ext.js"></script>
-<script src="../static/scripts/sl.js"></script>
-<script src="../static/scripts/soc.js"></script>
+<!-- block of lib's scripts-->
+<script src="../static/scripts/libs/plugin-detect-0.9.1.min.js"></script>
+
+<!-- block of custom scripts-->
+<!--Marker for Adblock detector-->
+<script src="../static/scripts/custom/advertisement.js"></script>
+<!--WebRTC leaks testing-->
+<script src="../static/scripts/custom/webrtc.js"></script>
+<!--Is Do Not Track Enabled?-->
+<script src="../static/scripts/custom/dnt.js"></script>
+<!--Is Flash Player working right now?-->
+<script src="../static/scripts/custom/fp.js"></script>
+<!--Geolocation testing-->
+<script src="../static/scripts/custom/geo.js"></script>
+<!--FingerPrints you-->
+<script src="../static/scripts/custom/cfp.js"></script>
+<!--How does WebGL leak you?-->
+<script src="../static/scripts/custom/webgl.js"></script>
+<!--Are you adblocking?-->
+<script src="../static/scripts/custom/ext.js"></script>
+<!--Are you SilverLighting?-->
+<script src="../static/scripts/custom/sl.js"></script>
+<!--Social Media and networks testing comes here-->
+<script src="../static/scripts/custom/soc.js"></script>
+<!--WMP detects right there-->
+<script src="../static/scripts/custom/wmd.js"></script>
 
 {% endblock %}
 

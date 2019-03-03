@@ -34,7 +34,7 @@
     <Compile Include="anonymity\portscan.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="anonymity\static\scripts\fp.js">
+    <Compile Include="anonymity\static\scripts\custom\fp.js">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="anonymity\tor.py">
@@ -53,22 +53,26 @@
     <Folder Include="anonymity\static\content\" />
     <Folder Include="anonymity\static\fonts\" />
     <Folder Include="anonymity\static\scripts\" />
+    <Folder Include="anonymity\static\scripts\libs\" />
+    <Folder Include="anonymity\static\scripts\custom\" />
     <Folder Include="anonymity\templates\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="anonymity\static\scripts\advertisement.js" />
-    <Content Include="anonymity\static\scripts\dnt.js">
+    <Content Include="anonymity\static\scripts\custom\advertisement.js" />
+    <Content Include="anonymity\static\scripts\custom\dnt.js">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="anonymity\static\scripts\ext.js" />
-    <Content Include="anonymity\static\scripts\geo.js" />
-    <Content Include="anonymity\static\scripts\cfp.js" />
-    <Content Include="anonymity\static\scripts\sl.js" />
-    <Content Include="anonymity\static\scripts\soc.js" />
-    <Content Include="anonymity\static\scripts\webgl.js" />
-    <Content Include="anonymity\static\scripts\webrtc.js">
+    <Content Include="anonymity\static\scripts\custom\ext.js" />
+    <Content Include="anonymity\static\scripts\custom\geo.js" />
+    <Content Include="anonymity\static\scripts\custom\cfp.js" />
+    <Content Include="anonymity\static\scripts\custom\sl.js" />
+    <Content Include="anonymity\static\scripts\custom\soc.js" />
+    <Content Include="anonymity\static\scripts\custom\webgl.js" />
+    <Content Include="anonymity\static\scripts\custom\webrtc.js">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="anonymity\static\scripts\custom\wmd.js" />
+    <Content Include="anonymity\static\scripts\libs\plugin-detect-0.9.1.min.js" />
     <Content Include="requirements.txt" />
     <Content Include="anonymity\static\content\bootstrap.css" />
     <Content Include="anonymity\static\content\bootstrap.min.css" />
@@ -77,8 +81,8 @@
     <Content Include="anonymity\static\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="anonymity\static\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="anonymity\static\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="anonymity\static\scripts\bootstrap.min.js" />
-    <Content Include="anonymity\static\scripts\jquery-1.10.2.js" />
+    <Content Include="anonymity\static\scripts\libs\bootstrap.min.js" />
+    <Content Include="anonymity\static\scripts\libs\jquery-1.10.2.js" />
     <Content Include="anonymity\templates\contact.html" />
     <Content Include="anonymity\templates\index.html" />
     <Content Include="anonymity\templates\layout.html" />

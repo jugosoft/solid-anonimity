@@ -30,10 +30,11 @@
     - Bitbucket;
     - ВКонтакте;
     - Steam;
+- Обнаружение Windows Media Player;
+- Обнаружение ActiveX;
 
 
 В планах:
-+ windows media;
 + realplayer version;
 + quicktime plug-in;
 + realplayer plugin;

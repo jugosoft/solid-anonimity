@@ -21,7 +21,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a id="lol" onclick="alert('Ar3 y0u @n 1d10t??? Y0u h@v3 g0t r3sults!');">RUN TESTS</a></li>
+                    <li><a id="lol" onclick="alert('Ar3 y0u @n 1d10t??? Y0u h@v3 already g0t r3sults!');">RUN TESTS</a></li>
                     <li><a href="{{ url_for('contact') }}">Contacts're unavalible</a></li>
                 </ul>
             </div>
@@ -35,10 +35,11 @@
             <p>&copy; {{ year }} - Anonimity checking service</p>
         </footer>
     </div>
-
-    <script src="/static/scripts/jquery-1.10.2.js"></script>
-    <script src="/static/scripts/bootstrap.js"></script>
-    <script src="../static/scripts/advertisement.js"></script>
-    {% block scripts %}{% endblock %}
+    
+    {% block scripts %}
+    <!-- block of lib's scripts-->
+    <script src="../static/scripts/libs/jquery-1.10.2.js"></script>
+    <script src="../static/scripts/libs/bootstrap.min.js"></script>
+    {% endblock %}
 </body>
 </html>

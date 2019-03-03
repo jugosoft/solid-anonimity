@@ -1,4 +1,5 @@
 var leakSocialMediaAccounts = function (callback) {
+
     var platforms = [{
         domain: "https://twitter.com",
         redirect: "/login?redirect_after_login=%2f..%2ffavicon.ico",
@@ -53,32 +54,34 @@ var leakSocialMediaAccounts = function (callback) {
     });
 };
 
-var isFirstLoggedIn = true;
-
 function displayResult(network, loggedIn) {
     var id = loggedIn ? 'loggedIn' : 'notLoggedIn';
     var favicon = faviconUri(network);
     var url = network.domain + network.redirect;
     var el = '<a target="_blank" href="' + url + '" target="_blank" class=network><img src=' + favicon + '><span>' + network.name + '</span></a>';
-    if (loggedIn && isFirstLoggedIn) {
-        isFirstLoggedIn = false;
-        document.getElementById(id).innerHTML = el;
-    } else {
-        document.getElementById(id).innerHTML += el;
-    }
+    if (loggedIn)      
+        document.getElementById(id).innerHTML += el + " ";
+        
+        //console.log(id);
+    
 }
 leakSocialMediaAccounts(displayResult);
 
 function faviconUri(network) {
+
     var favicon = network.domain + '/favicon.ico';
-    if (network.name === 'Dropbox') {
+
+    //DEBUG INFO
+    //console.log(favicon);
+
+    if (network.name === 'Dropbox') 
         favicon = 'https://www.dropbox.com/static/images/favicon.ico';
-    }
-    if (network.name === 'Youtube') {
+    
+    if (network.name === 'Youtube') 
         favicon = 'https://www.youtube.com/favicon.ico';
-    }
-    if (network.name === 'Gmail') {
+    
+    if (network.name === 'Gmail') 
         favicon = 'https://mail.google.com/favicon.ico';
-    }
+    
     return favicon;
 }
