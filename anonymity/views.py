@@ -8,6 +8,7 @@ from anonymity import portscan
 from anonymity import dnsleak
 from anonymity import tor
 from anonymity import blacklisted as bl
+from anonymity import tracert as tr
 
 #list of http headers
 #may be a reason for proxies detection
@@ -46,22 +47,24 @@ def home():
     #opened_ports = portscan.scan(request.headers.environ.get("REMOTE_ADDR"), False)
 
     #tracing path to the client :-)
-    #utils.trace(dns_info[1])
+    trace_route = tr.start(dns_info[1])
 
     #get info about blacklisting status of IP
-    bl.start(dns_info[1])
+    black_listed = bl.start(dns_info[1])
     
     #renders page with current data
     return render_template(
         'index.html',
-        using_proxies = proxies,
-        user_agent = request.headers.environ.get("HTTP_USER_AGENT"),      
-        language = request.headers.environ.get("HTTP_ACCEPT_LANGUAGE"),
-        dns = dns_info,
-        tor = used_tor,
-        opened_ports = 1, #opened_ports,
-        title='Anonymity checker',
-        year=datetime.now().year,
+        using_proxies       = proxies,
+        user_agent          = request.headers.environ.get("HTTP_USER_AGENT"),      
+        language            = request.headers.environ.get("HTTP_ACCEPT_LANGUAGE"),
+        dns                 = dns_info,
+        tor                 = used_tor,
+        black               = black_listed,
+        trace               = trace_route,
+        opened_ports        = 1, #opened_ports,
+        title               = 'Anonymity checker',
+        year                = datetime.now().year,
     )
 
 @app.route('/contact')

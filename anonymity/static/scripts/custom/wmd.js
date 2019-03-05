@@ -49,49 +49,27 @@
     // The 'instantiate' input argument only affects non-Internet Explorer browsers.       
     // For Internet Explorer, the plugin version will always be detected regardless
     // of the value of 'instantiate'.
-    instantiate = false;
+        instantiate = false;
 
-    // Detect WMP Version
-    if ($.getVersion) {
-        P.version = $.getVersion(P.name, instantiate);
-        out.innerHTML += ("Plugin version: " + P.version);
-    }
+    if ($.getVersion(P.name, instantiate) !== null) {
 
-
-    // Detect Plugin Status
-    if ($.isMinVersion) {
-        P.status = $.isMinVersion(P.name, P.minVersion, instantiate);
-        out.innerHTML += "Plugin status: " + getStatusMsg(P);
-        out.innerHTML += "";
-    }
-
-
-    var INFO = $.getInfo ? $.getInfo(P.name, instantiate) : null;
-
-    if (INFO) {
-        out.innerHTML += "Plugin is scriptable: " + (INFO.Scriptable ? "true" : "false");
-
-        if (INFO.DllPlugin && !INFO.FirefoxPlugin) {
-            out.innerHTML += "";
-            out.innerHTML += "Note: It appears you are using the old Windows Media Player plugin (Dynamic Link Library).";
-            out.innerHTML += "We recommend that you upgrade to the Windows Media Player Firefox plugin.";
+        // Detect WMP Version
+        if ($.getVersion) {
+            P.version = $.getVersion(P.name, instantiate);
+            out.innerHTML += " Plugin version: " + P.version;
         }
 
-        if (INFO.DllPlugin && INFO.FirefoxPlugin) {
-            out.innerHTML += "";
-            out.innerHTML += "Note: you appear to have BOTH the old Windows Media Player plugin (Dynamic Link Library) " +
-                "AND the new Windows Media Player Firefox plugin. You can disable the old plugin " +
-                "in your browser to avoid any potential conflict between the two.";
-        }
 
-        if (P.status === 0 && INFO.FirefoxPlugin) {
+        // Detect Plugin Status
+        if ($.isMinVersion) {
+            P.status = $.isMinVersion(P.name, P.minVersion, instantiate);
+            out.innerHTML += " Plugin status: " + getStatusMsg(P);
             out.innerHTML += "";
-            out.innerHTML += "Note: if you want the plugin version to be detected, then you will need to use the " +
-                "'instantiate' input argument.";
-            out.innerHTML += "You may also have to give your browser security permission to run the plugin.";
         }
+    } else {
+        out.innerHTML += " status: is not detected";
     }
-    
+
     if ($.browser.isIE) {
         out.innerHTML += "";
 

@@ -137,9 +137,47 @@
             <tr>
                 <td>
                     <div id="wmd">
-                        Windows Media Player 
+                        Windows Media Player
                     </div>
                 </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>Spam bases for current IP:</strong>
+                </td>
+            </tr>
+
+            {% for k, v in black.items() %}
+            <tr>
+                <td>
+                    <span>{{ k }} :  {{ v }}</span>
+
+                </td>
+
+            </tr>
+            {% endfor %}
+
+            <tr>
+                <td>
+                    <strong>TraceRoute You:</strong>                    
+                </td>
+            </tr>
+
+            {% for elem in trace %}
+            <tr>
+                <td>
+                    <span>{{ elem.number }} :</span> 
+                    <span>{{ elem.hostname }} :</span>
+                    <span>{{ elem.ip }} :</span>
+                    <span>{{ elem.rtt }}</span>
+                </td>
+
+            </tr>
+            {% endfor %}
+
+
+            <tr>
+                <td></td>
             </tr>
         </tbody>
     </table>

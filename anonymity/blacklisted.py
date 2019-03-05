@@ -1,155 +1,38 @@
 import socket
 import sys
 import string
+import json
+from urllib.request import urlopen
 
-from gevent.pool import Pool
-from gevent import monkey
+class BlackListCheckerAPI:
+    #fields
+    ip = None
+    api_key = None    
+    output_type = None
+    json_result = None
 
-monkey.patch_all()
+    query = 'https://api.viewdns.info/spamdblookup/?'
 
-SERVER_LIST = [
-            "truncate.gbudb.net",
-            "bad.psky.me",
-            "0spam.fusionzero.com",
-            "access.redhawk.org",
-            "b.barracudacentral.org",
-            "bhnc.njabl.org",
-            "bl.deadbeef.com",
-            "bl.spamcannibal.org",
-            "bl.spamcop.net",
-            "bl.technovision.dk",
-            "blackholes.five-ten-sg.com",
-            "blackholes.mail-abuse.org",
-            "blacklist.sci.kun.nl",
-            "blacklist.woody.ch",
-            "bogons.cymru.com",
-            "cbl.abuseat.org",
-            "cdl.anti-spam.org.cn",
-            "combined.abuse.ch",
-            "combined.rbl.msrbl.net",
-            "db.wpbl.info",
-            "dnsbl-1.uceprotect.net",
-            "dnsbl-2.uceprotect.net",
-            "dnsbl-3.uceprotect.net",
-            "dnsbl.cyberlogic.net",
-            "dnsbl.inps.de",
-            "dnsbl.kempt.net",
-            "dnsbl.njabl.org",
-            "dnsbl.solid.net",
-            "dnsbl.sorbs.net",
-            "drone.abuse.ch",
-            "duinv.aupads.org",
-            "dul.ru",
-            "dyna.spamrats.com",
-            "dynip.rothen.com",
-            "forbidden.icm.edu.pl",
-            "hil.habeas.com",
-            "images.rbl.msrbl.net",
-            "ips.backscatterer.org",
-            "ix.dnsbl.manitu.net",
-            "korea.services.net",
-            "mail-abuse.blacklist.jippg.org",
-            "no-more-funn.moensted.dk",
-            "noptr.spamrats.com",
-            "ohps.dnsbl.net.au",
-            "omrs.dnsbl.net.au",
-            "orvedb.aupads.org",
-            "osps.dnsbl.net.au",
-            "osrs.dnsbl.net.au",
-            "owfs.dnsbl.net.au",
-            "owps.dnsbl.net.au",
-            "phishing.rbl.msrbl.net",
-            "probes.dnsbl.net.au",
-            "proxy.bl.gweep.ca",
-            "proxy.block.transip.nl",
-            "psbl.surriel.com",
-            "rbl.interserver.net",
-            "rbl.orbitrbl.com",
-            "rbl.schulte.org",
-            "rdts.dnsbl.net.au",
-            "relays.bl.gweep.ca",
-            "relays.bl.kundenserver.de",
-            "relays.nether.net",
-            "residential.block.transip.nl",
-            "ricn.dnsbl.net.au",
-            "rmst.dnsbl.net.au",
-            "short.rbl.jp",
-            "spam.abuse.ch",
-            "spam.dnsbl.sorbs.net",
-            "spam.rbl.msrbl.net",
-            "spam.spamrats.com",
-            "spamguard.leadmon.net",
-            "spamlist.or.kr",
-            "spamrbl.imp.ch",
-            "spamsources.fabel.dk",
-            "spamtrap.drbl.drand.net",
-            "t3direct.dnsbl.net.au",
-            "tor.dnsbl.sectoor.de",
-            "torserver.tor.dnsbl.sectoor.de",
-            "ubl.lashback.com",
-            "ubl.unsubscore.com",
-            "virbl.bit.nl",
-            "virus.rbl.jp",
-            "virus.rbl.msrbl.net",
-            "wormrbl.imp.ch",
-            "zen.spamhaus.org",
-        ]
+    def __init__(self, ip, api_key = '1a1a2ab50499e745c675461a53601d10fc5ff550', output_type = 'json'):
+        self.ip = ip
+        self.api_key = api_key
+        self.output_type = output_type
 
-class BlackListsChecker:
-    def __init__(self, threads=1):
-        self.threads = threads
-        self.serverlist = SERVER_LIST
+    def parse_json(self):
+        j = json.loads(self.json_result)['response']['dbs']
+        self.json_result = dict()
 
-    def is_spam(self, host):
-        """Check hosts in blacklists"""
-        """
-        Run async spam checking on host
-        :param host: domain or ip address
-        :return: None
-        """
-        # Severs where host is blacklisted
-        self.blacklisted = []
-        # Generate ars for checker
-        args = [(host, i) for i in self.serverlist]
-        # Init Pool
-        self.pool = Pool(self.threads)
-        # Spawn pool
-        self.pool.map(self.check, args)
-        return self.blacklisted
+        for elem in j:
+            self.json_result.update({ elem['name'] : elem['result'] })
 
-    def check(self, args):
-        """
-        Check host in the server's blacklist
-        :param *args: tuple with host name for check and
-            blacklist server address
-        :return: None
-        """
-        host, server = args
+        return self.json_result
 
-        try:
-            host_addr = socket.gethostbyname(host)
-        except socket.error:
-            return
-
-        # Reverse ip addr
-        addr_parts = string.split(host_addr, '.')
-        addr_parts.reverse()
-        host_addr = string.join(addr_parts, '.')
-
-        check_host = '{0}.{1}'.format(host_addr, server)
-
-        try:
-            check_addr = socket.gethostbyname(check_host)
-        except socket.error:
-            check_addr = None
-
-        if check_addr is not None and "127.0.0." in check_addr:
-            self.blacklisted.append(server)
+    def check(self):
+        url = self.query + '&' + self.ip + '&' + self.api_key + '&' + self.output_type  
+        self.json_result = '{"query" : {"tool" : "spamdblookup_PRO","ip" : "1.2.3.4"},"response" : { "dbs" : [{ "name" : "b.barracudacentral.org", "result" : "ok"},{ "name" : "bl.deadbeef.com", "result" : "ok"},{ "name" : "bl.emailbasura.org", "result" : "ok"},{ "name" : "bl.spamcop.net", "result" : "ok"},{ "name" : "blacklist.woody.ch", "result" : "ok"},{ "name" : "cbl.abuseat.org", "result" : "ok"},{ "name" : "combined.rbl.msrbl.net", "result" : "ok"},{ "name" : "db.wpbl.info", "result" : "ok"},{ "name" : "dnsbl.cyberlogic.net", "result" : "ok"},{ "name" : "dnsbl.njabl.org", "result" : "ok"},{ "name" : "dnsbl.sorbs.net", "result" : "ok"},{ "name" : "dnsbl-3.uceprotect.net", "result" : "ok"},{ "name" : "drone.abuse.ch", "result" : "ok"},{ "name" : "http.dnsbl.sorbs.net", "result" : "ok"},{ "name" : "httpbl.abuse.ch", "result" : "ok"},{ "name" : "images.rbl.msrbl.net", "result" : "ok"},{ "name" : "ips.backscatterer.org", "result" : "ok"},{ "name" : "nomail.rhsbl.sorbs.net", "result" : "ok"},{ "name" : "pbl.spamhaus.org", "result" : "ok"},{ "name" : "phishing.rbl.msrbl.net", "result" : "ok"},{ "name" : "sbl.spamhaus.org", "result" : "ok"},{ "name" : "smtp.dnsbl.sorbs.net", "result" : "ok"},{ "name" : "socks.dnsbl.sorbs.net", "result" : "ok"},{ "name" : "spam.dnsbl.sorbs.net", "result" : "ok"},{ "name" : "spam.rbl.msrbl.net", "result" : "ok"},{ "name" : "spam.spamrats.com", "result" : "ok"},{ "name" : "ubl.unsubscore.com", "result" : "ok"},{ "name" : "virus.rbl.msrbl.net", "result" : "ok"},{ "name" : "web.dnsbl.sorbs.net", "result" : "ok"},{ "name" : "xbl.spamhaus.org", "result" : "ok"},{ "name" : "zen.spamhaus.org", "result" : "ok"},{ "name" : "zombie.dnsbl.sorbs.net", "result" : "ok"}]}}'
+        #self.json_result = urlopen(url)
+        return self.parse_json()
 
 def start(ip):
-    sp = BlackListsChecker(threads=20)
-    if len(sys.argv) == 1:
-        result = sp.is_spam(ip)
-        if result:
-            for r in result:
-                print(r)
+    bl = BlackListCheckerAPI(ip = ip)
+    return bl.check()
