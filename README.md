@@ -32,6 +32,8 @@
     - Steam;
 - Обнаружение Windows Media Player;
 - Обнаружение ActiveX;
+- Наличие IP в спамюбазах;
+- tracert;
 
 
 В планах:
