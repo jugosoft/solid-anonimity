@@ -6,33 +6,24 @@
     <title>{{ title }}</title>
     <link rel="stylesheet" type="text/css" href="/static/content/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
+    <style>
+        body {
+            background-image: url('../static/imgs/1.jpg');
+            background-attachment: fixed;
+        }
+    </style>
 </head>
 
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="/" class="navbar-brand">Anonimity checking service</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a id="lol" onclick="alert('Ar3 y0u @n 1d10t??? Y0u h@v3 already g0t r3sults!');">RUN TESTS</a></li>
-                    <li><a href="{{ url_for('contact') }}">Contacts're unavalible</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+<body>   
 
     <div class="container body-content">
         {% block content %}{% endblock %}
-        <hr />
         <footer>
-            <p>&copy; {{ year }} - Anonimity checking service</p>
+            <p align="center">
+                <h2>
+                    &copy; {{ year }}
+                </h2>
+            </p>
         </footer>
     </div>
     
