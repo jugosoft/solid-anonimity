@@ -66,10 +66,10 @@ def get_dns_leak():
             if dns_server['type'] == "dns":
                 if dns_server['country_name']:
                     if dns_server['asn']:
-                        resulting_info.append(dns_server['ip'] + " [" + dns_server['country_name'] + ", "+dns_server['asn'] + "]")
+                        resulting_info.append(dns_server['ip'] + " [" + dns_server['country_name'] + ", " + dns_server['asn'] + "]")
                         #print(resulting_info[len(resulting_info) - 1])
                     else:
-                        resulting_info.append(dns_server['ip'] + " ["+dns_server['country_name'] + "]")
+                        resulting_info.append(dns_server['ip'] + " [" + dns_server['country_name'] + "]")
                         #print(resulting_info[len(resulting_info) - 1])
                 else:
                     resulting_info.append(dns_server['ip'])

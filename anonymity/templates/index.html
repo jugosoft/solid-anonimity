@@ -50,10 +50,17 @@
                 </thead>
                 <tbody>
                     {% for elem in dns %}
-                    <tr class="warning">
-                        <td>{{ elem }}</td>
-                    </tr>
                     {% endfor %}
+                    <tr id="dns0" class="warning">
+                        <td>{{ dns[0] }} {{ dns[1] }}</td>
+                    </tr>
+                    <tr id="dns1" class="warning">
+                        <td>{{ dns[2] }}</td>
+                    </tr>
+                   <tr id="dns2" class="warning">
+                        <td>{{ dns[-1] }}</td>
+                    </tr>
+
                     <tr class="success">
                         <td>
                             Using proxies : {{ using_proxies }}
@@ -220,7 +227,7 @@
                     </tr>
                     {% endif %}
                     {% endfor %}
-                    
+
                 </tbody>
             </table>
         </div>

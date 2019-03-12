@@ -68,6 +68,7 @@
   <ItemGroup>
     <Content Include="anonymity\static\imgs\1.jpg" />
     <Content Include="anonymity\static\scripts\custom\advertisement.js" />
+    <Content Include="anonymity\static\scripts\custom\anon_state.js" />
     <Content Include="anonymity\static\scripts\custom\dnt.js">
       <SubType>Code</SubType>
     </Content>
