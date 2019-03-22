@@ -32,236 +32,240 @@
             </h3>
         </a>
     </div>
+</div>
 
-    <div class="row">
-        <h2>Basic Info</h2>
+<div class="row">
+    <h2>Basic Info</h2>
+</div>
+<div class="row">
+
+    <div class="col-xl-2 col-lg-2 col-md-1 col-xs-0">
+
     </div>
-    <div class="row">
+    <div class="col-xl-8 col-lg-8 col-md-10 col-xs-12">
+        <table class="table table-bordered table-hover table-dark">
+            <thead>
+                <tr class="info">
+                    <th scope="col"> Information about you...</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for elem in dns %}
+                {% endfor %}
+                <tr id="dns0" class="warning">
+                    <td>{{ dns[0] }} {{ dns[1] }}</td>
+                </tr>
+                <tr id="dns1" class="warning">
+                    <td>{{ dns[2] }}</td>
+                </tr>
+                <tr id="dns2" class="warning">
+                    <td>{{ dns[-1] }}</td>
+                </tr>
 
-        <div class="col-xl-2 col-lg-2 col-md-1 col-xs-0">
+                <tr class="success">
+                    <td>
+                        <span>Using proxies : </span>
+                        <span id="proxies">{{ using_proxies }}</span>
+                    </td>
+                </tr>
+                <tr class="warning">
+                    <td>
+                        User agent : {{ user_agent }}
+                    </td>
+                </tr>
+                <tr class="warning">
+                    <td>
+                        <span>Opened ports :</span>
+                        <span id="ports">{{ opened_ports }}</span>
+                    </td>
+                </tr>
+                <tr class="danger">
+                    <td>
+                        Language = {{ language }}
+                    </td>
+                </tr>
+                <tr class="success">
+                    <td>
+                        TOR = {{ tor }}
+                    </td>
+                </tr>
+                <tr class="warning">
+                    <td id="js">
+                        <!--Here checks status of JS-->
+                        JS is not working now... yet...
+                        <script>
+                            document.getElementById("js").innerHTML = "JS is really working! Stop it!";
+                        </script>
+                    </td>
+                </tr>
+                <tr class="success">
+                    <td id="rtc">
+                        <!--Here goes WebRTC Ips leak detection-->
+                    </td>
+                </tr>
+                <tr class="danger">
+                    <td id="dnt">
+                        <!--Here goes Do Not Track detection-->
+                    </td>
+                </tr>
+                <tr class="success">
+                    <td id="fp">
+                        <!--Here comes Flash player detection-->
+                    </td>
+                </tr>
+                <tr class="warning">
+                    <td>
+                        <span>Does someone track your location?</span>
+                        <span id="geo">No</span>
+                        <!--Here comes Geolocation leaks detection-->
+                    </td>
+                </tr>
+                <tr class="success">
+                    <td id="cfp">
+                        <!--Here comes Canvas FigerPrinting -->
+                    </td>
+                </tr>
+                <tr class="danger">
+                    <td>
+                        <!--Here comes WebGL detection-->
+                        <span>Leaks WebGL are</span>
+                        <span id="webgl">impossible...</span>
+                    </td>
+                </tr>
+                <tr class="success">
+                    <td>
+                        <span>Here goes your browser's extensions:</span>
+                        <p id="228"></p>
+                        <script type="text/javascript">
 
-        </div>
-        <div class="col-xl-8 col-lg-8 col-md-10 col-xs-12">
-            <table class="table table-bordered table-hover table-dark">
-                <thead>
-                    <tr class="danger">
-                        <th scope="col"> Information about you...</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for elem in dns %}
-                    {% endfor %}
-                    <tr id="dns0" class="warning">
-                        <td>{{ dns[0] }} {{ dns[1] }}</td>
-                    </tr>
-                    <tr id="dns1" class="warning">
-                        <td>{{ dns[2] }}</td>
-                    </tr>
-                   <tr id="dns2" class="warning">
-                        <td>{{ dns[-1] }}</td>
-                    </tr>
+                            var x = navigator.plugins.length;
 
-                    <tr class="success">
-                        <td>
-                            Using proxies : {{ using_proxies }}
-                        </td>
-                    </tr>
-                    <tr class="warning">
-                        <td>
-                            User agent : {{ user_agent }}
-                        </td>
-                    </tr>
-                    <tr class="warning">
-                        <td>
-                            Opened ports = {{ opened_ports }}
-                        </td>
-                    </tr>
-                    <tr class="danger">
-                        <td>
-                            Language = {{ language }}
-                        </td>
-                    </tr>
-                    <tr class="success">
-                        <td>
-                            TOR = {{ tor }}
-                        </td>
-                    </tr>
-                    <tr class="warning">
-                        <td id="js">
-                            <!--Here checks status of JS-->
-                            JS is not working now... yet...
-                            <script>
-                                document.getElementById("js").innerHTML = "JS is really working! Stop it!";
-                            </script>
-                        </td>
-                    </tr>
-                    <tr class="success">
-                        <td id="rtc">
-                            <!--Here goes WebRTC Ips leak detection-->
-                        </td>
-                    </tr>
-                    <tr class="danger">
-                        <td id="dnt">
-                            <!--Here goes Do Not Track detection-->
-                        </td>
-                    </tr>
-                    <tr class="success">
-                        <td id="fp">
-                            <!--Here comes Flash player detection-->
-                        </td>
-                    </tr>
-                    <tr class="warning">
-                        <td>
-                            <span>Does someone track your location?</span>
-                            <span id="geo">No</span>
-                            <!--Here comes Geolocation leaks detection-->
-                        </td>
-                    </tr>
-                    <tr class="success">
-                        <td id="cfp">
-                            <!--Here comes Canvas FigerPrinting -->
-                        </td>
-                    </tr>
-                    <tr class="danger">
-                        <td>
-                            <!--Here comes WebGL detection-->
-                            <span>Leaks WebGL are</span>
-                            <span id="webgl">impossible...</span>
-                        </td>
-                    </tr>
-                    <tr class="success">
-                        <td>
-                            <span>Here goes your browser's extensions:</span>
-                            <p id="228"></p>
-                            <script type="text/javascript">
+                            // store the total no of plugin stored
+                            var txt = "There are " + x + " plugins installed: <br/>";
 
-                                var x = navigator.plugins.length;
+                            for (var i = 0; i < x; i++)
+                                txt += i + ". " + navigator.plugins[i].name + "<br/>";
 
-                                // store the total no of plugin stored
-                                var txt = "There are " + x + " plugins installed: <br/>";
+                            document.getElementById("228").innerHTML = txt;
+                        </script>
+                    </td>
+                </tr>
+                <tr class="warning">
+                    <td>
+                        <!--Here comes SilverLight detection-->
+                        <span>Leaks SilverLight are</span>
+                        <span id="sl">impossible...</span>
+                    </td>
+                </tr>
+                <tr class="success">
+                    <td>
+                        <div id="loggedIn">
 
-                                for (var i = 0; i < x; i++)
-                                    txt += i + ". " + navigator.plugins[i].name + "<br/>";
+                        </div>
+                    </td>
+                </tr>
+                <tr class="danger">
+                    <td>
+                        <div id="wmd">
+                            Windows Media Player
+                        </div>
+                    </td>
+                </tr>
+                <tr class="active">
+                    <td>
+                        <strong>Spam bases for current IP:</strong>
+                    </td>
+                </tr>
 
-                                document.getElementById("228").innerHTML = txt;
-                            </script>
-                        </td>
-                    </tr>
-                    <tr class="warning">
-                        <td>
-                            <!--Here comes SilverLight detection-->
-                            <span>Leaks SilverLight are</span>
-                            <span id="sl">impossible...</span>
-                        </td>
-                    </tr>
-                    <tr class="success">
-                        <td>
-                            <div id="loggedIn">
+                {% for k, v in black.items() %}
+                {% if v == 'ok' %}
+                <tr class="success">
+                    <td>
+                        <div class="row">
+                            <span class="col-xl-4 col-lg-4 col-md-6 col-xs-6"> {{ k }} </span>
+                            <span class="col-xl-8 col-lg-8 col-md-6 col-xs-6"> {{ v }} </span>
+                        </div>
+                    </td>
+                </tr>
+                {% else %}
+                <tr class="danger">
+                    <td>
+                        <div class="row">
+                            <span class="col-xl-4 col-lg-4 col-md-6 col-xs-6"> {{ k }} </span>
+                            <span class="col-xl-8 col-lg-8 col-md-6 col-xs-6"> {{ v }} </span>
+                        </div>
+                    </td>
+                </tr>
+                {% endif %}
+                {% endfor %}
 
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="danger">
-                        <td>
-                            <div id="wmd">
-                                Windows Media Player
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="active">
-                        <td>
-                            <strong>Spam bases for current IP:</strong>
-                        </td>
-                    </tr>
+                <tr class="active">
+                    <td>
+                        <strong>TraceRoute You:</strong>
+                    </td>
+                </tr>
 
-                    {% for k, v in black.items() %}
-                    {% if v == 'ok' %}
-                    <tr class="success">
-                        <td>
-                            <div class="row">
-                                <span class="col-xl-4 col-lg-4 col-md-6 col-xs-6"> {{ k }} </span>
-                                <span class="col-xl-8 col-lg-8 col-md-6 col-xs-6"> {{ v }} </span>
-                            </div>
-                        </td>
-                    </tr>
-                    {% else %}
-                    <tr class="danger">
-                        <td>
-                            <div class="row">
-                                <span class="col-xl-4 col-lg-4 col-md-6 col-xs-6"> {{ k }} </span>
-                                <span class="col-xl-8 col-lg-8 col-md-6 col-xs-6"> {{ v }} </span>
-                            </div>
-                        </td>
-                    </tr>
-                    {% endif %}
-                    {% endfor %}
+                <tr class="danger">
+                    <td>
+                        <div class="row">
+                            <span class="col-xl-1 col-lg-1 col-md-1 col-xs-1"> # </span>
+                            <span class="col-xl-7 col-lg-7 col-md-7 col-xs-7"> Hostname </span>
+                            <span class="col-xl-2 col-lg-2 col-md-2 col-xs-2"> IP </span>
+                            <span class="col-xl-2 col-lg-2 col-md-2 col-xs-2"> rtt </span>
+                        </div>
+                    </td>
+                </tr>
 
-                    <tr class="active">
-                        <td>
-                            <strong>TraceRoute You:</strong>
-                        </td>
-                    </tr>
+                {% for elem in trace %}
+                {% if elem.number != '*' and elem.hostname != '*'and  elem.ip != '*' and elem.rtt != '*' %}
+                <tr class="warning">
+                    <td>
+                        <div class="row">
+                            <span class="col-xl-1 col-lg-1 col-md-1 col-xs-1"> {{ elem.number }} </span>
+                            <span class="col-xl-7 col-lg-7 col-md-7 col-xs-7"> {{ elem.hostname }} </span>
+                            <span class="col-xl-2 col-lg-2 col-md-2 col-xs-2"> {{ elem.ip }} </span>
+                            <span class="col-xl-2 col-lg-2 col-md-2 col-xs-2"> {{ elem.rtt }} </span>
+                        </div>
+                    </td>
+                </tr>
+                {% endif %}
+                {% endfor %}
 
-                    <tr class="danger">
-                        <td>
-                            <div class="row">
-                                <span class="col-xl-1 col-lg-1 col-md-1 col-xs-1"> # </span>
-                                <span class="col-xl-7 col-lg-7 col-md-7 col-xs-7"> Hostname </span>
-                                <span class="col-xl-2 col-lg-2 col-md-2 col-xs-2"> IP </span>
-                                <span class="col-xl-2 col-lg-2 col-md-2 col-xs-2"> rtt </span>
-                            </div>
-                        </td>
-                    </tr>
-
-                    {% for elem in trace %}
-                    {% if elem.number != '*' and elem.hostname != '*'and  elem.ip != '*' and elem.rtt != '*' %}
-                    <tr class="warning">
-                        <td>
-                            <div class="row">
-                                <span class="col-xl-1 col-lg-1 col-md-1 col-xs-1"> {{ elem.number }} </span>
-                                <span class="col-xl-7 col-lg-7 col-md-7 col-xs-7"> {{ elem.hostname }} </span>
-                                <span class="col-xl-2 col-lg-2 col-md-2 col-xs-2"> {{ elem.ip }} </span>
-                                <span class="col-xl-2 col-lg-2 col-md-2 col-xs-2"> {{ elem.rtt }} </span>
-                            </div>
-                        </td>
-                    </tr>
-                    {% endif %}
-                    {% endfor %}
-
-                </tbody>
-            </table>
-        </div>
-        <div class="col-xl-2 col-lg-2 col-md-1 col-xs-0">
-
-        </div>
+            </tbody>
+        </table>
     </div>
+    <div class="col-xl-2 col-lg-2 col-md-1 col-xs-0">
 
-    <!-- block of lib's scripts-->
-    <script src="../static/scripts/libs/plugin-detect-0.9.1.min.js"></script>
+    </div>
+</div>
 
-    <!-- block of custom scripts-->
-    <!--Marker for Adblock detector-->
-    <script src="../static/scripts/custom/advertisement.js"></script>
-    <!--WebRTC leaks testing-->
-    <script src="../static/scripts/custom/webrtc.js"></script>
-    <!--Is Do Not Track Enabled?-->
-    <script src="../static/scripts/custom/dnt.js"></script>
-    <!--Is Flash Player working right now?-->
-    <script src="../static/scripts/custom/fp.js"></script>
-    <!--Geolocation testing-->
-    <script src="../static/scripts/custom/geo.js"></script>
-    <!--FingerPrints you-->
-    <script src="../static/scripts/custom/cfp.js"></script>
-    <!--How does WebGL leak you?-->
-    <script src="../static/scripts/custom/webgl.js"></script>
-    <!--Are you adblocking?-->
-    <script src="../static/scripts/custom/ext.js"></script>
-    <!--Are you SilverLighting?-->
-    <script src="../static/scripts/custom/sl.js"></script>
-    <!--Social Media and networks testing comes here-->
-    <script src="../static/scripts/custom/soc.js"></script>
-    <!--WMP detects right there-->
-    <script src="../static/scripts/custom/wmd.js"></script>
+<!-- block of lib's scripts-->
+<script src="../static/scripts/libs/plugin-detect-0.9.1.min.js"></script>
+
+<!-- block of custom scripts-->
+<script src="../static/scripts/custom/anon_state.js"></script>
+<!--Marker for Adblock detector-->
+<script src="../static/scripts/custom/advertisement.js"></script>
+<!--WebRTC leaks testing-->
+<script src="../static/scripts/custom/webrtc.js"></script>
+<!--Is Do Not Track Enabled?-->
+<script src="../static/scripts/custom/dnt.js"></script>
+<!--Is Flash Player working right now?-->
+<script src="../static/scripts/custom/fp.js"></script>
+<!--Geolocation testing-->
+<script src="../static/scripts/custom/geo.js"></script>
+<!--FingerPrints you-->
+<script src="../static/scripts/custom/cfp.js"></script>
+<!--How does WebGL leak you?-->
+<script src="../static/scripts/custom/webgl.js"></script>
+<!--Are you adblocking?-->
+<script src="../static/scripts/custom/ext.js"></script>
+<!--Are you SilverLighting?-->
+<script src="../static/scripts/custom/sl.js"></script>
+<!--Social Media and networks testing comes here-->
+<script src="../static/scripts/custom/soc.js"></script>
+<!--WMP detects right there-->
+<script src="../static/scripts/custom/wmd.js"></script>
 
     {% endblock %}
 
