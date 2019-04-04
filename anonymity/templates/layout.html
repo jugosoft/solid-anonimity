@@ -8,8 +8,8 @@
     <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
     <style>
         body {
-            background-image: url('../static/imgs/1.jpg');
-            background-attachment: fixed;
+            background: rgb(2,0,36);
+            background: linear-gradient(90deg, rgba(2,0,36,1) 21%, rgba(52,52,212,1) 34%, rgba(226,35,84,1) 55%, rgba(0,212,255,1) 100%);
         }
     </style>
 </head>
@@ -17,20 +17,9 @@
 <body>   
 
     <div class="container body-content">
-        {% block content %}{% endblock %}
-        <footer>
-            <p align="center">
-                <h2>
-                    &copy; {{ year }}
-                </h2>
-            </p>
-        </footer>
+        {% block content %}{% endblock %}    
     </div>
     
-    {% block scripts %}
-    <!-- block of lib's scripts-->
-    <script src="../static/scripts/libs/jquery-1.10.2.js"></script>
-    <script src="../static/scripts/libs/bootstrap.min.js"></script>
-    {% endblock %}
+
 </body>
 </html>

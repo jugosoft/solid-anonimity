@@ -69,6 +69,7 @@
     <Content Include="anonymity\static\imgs\1.jpg" />
     <Content Include="anonymity\static\scripts\custom\advertisement.js" />
     <Content Include="anonymity\static\scripts\custom\anon_state.js" />
+    <Content Include="anonymity\static\scripts\custom\chart.js" />
     <Content Include="anonymity\static\scripts\custom\dnt.js">
       <SubType>Code</SubType>
     </Content>
@@ -82,7 +83,11 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="anonymity\static\scripts\custom\wmd.js" />
+    <Content Include="anonymity\static\scripts\libs\chart-2.7.3.min.js" />
+    <Content Include="anonymity\static\scripts\libs\chart-gauge.js" />
     <Content Include="anonymity\static\scripts\libs\plugin-detect-0.9.1.min.js" />
+    <Content Include="libman.json" />
+    <Content Include="anonymity\static\scripts\libs\Chart.bundle.js" />
     <Content Include="requirements.txt" />
     <Content Include="anonymity\static\content\bootstrap.css" />
     <Content Include="anonymity\static\content\bootstrap.min.css" />

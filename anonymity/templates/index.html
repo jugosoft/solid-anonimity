@@ -2,47 +2,38 @@
 
 {% block content %}
 
-<div class="row">
-    <div class="col-md-8">
-        <h2>Getting started</h2>
-        <p>
-            Criminals and embezzlers can use the anonymity to their advantage, especially in online social networks. Extreme abuse,
-            cyberbullying and illegal or fraudulent activities, abusive and anonymous email posting (spam) are some of the most visible
-            drawbacks to anonymity.
-        </p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more bitcoins</h2>
-        <p>You don't have to use Microsoft's garbage.</p>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-xl-2 col-lg-2 col-md-2 col-xs-2">
-        <h3>
+<div class="row blocks">   
+    <div class="col-md-12" style="text-align:center;">
+        <h1>
             <strong>
                 FIXED SOMETHING? TEST AGAIN
             </strong>
-        </h3>
-    </div>
-    <div class="col-xl-2 col-lg-2 col-md-2 col-xs-2">
-        <a href="/home" class="btn btn-success">
-            <h3>
-                RELOAD
-            </h3>
-        </a>
+        </h1>
     </div>
 </div>
 
-<div class="row">
-    <h2>Basic Info</h2>
-</div>
+
 <div class="row">
 
+    <div class="col-xl-2 col-lg-3 col-md-3 col-xs-2">
+
+    </div>
+    <div>
+        <!--Chart goes HERE!-->
+        <div class="col-xl-8 col-lg-8 col-md-10 col-xs-12 blocks" id="canvas-holder" style="width:50%;">
+            <canvas id="chart"></canvas>
+        </div>
+    </div>
+
+
+</div>
+
+
+<div>
     <div class="col-xl-2 col-lg-2 col-md-1 col-xs-0">
 
     </div>
-    <div class="col-xl-8 col-lg-8 col-md-10 col-xs-12">
+    <div class="col-xl-8 col-lg-8 col-md-10 col-xs-12 blocks" >
         <table class="table table-bordered table-hover table-dark">
             <thead>
                 <tr class="info">
@@ -86,8 +77,10 @@
                 </tr>
                 <tr class="success">
                     <td>
-                        TOR = {{ tor }}
+                        TOR =
+                        <span id="tor">{{ tor }}</span>
                     </td>
+                    
                 </tr>
                 <tr class="warning">
                     <td id="js">
@@ -240,10 +233,16 @@
 </div>
 
 <!-- block of lib's scripts-->
+
+<script src="../static/scripts/libs/jquery-1.10.2.js"></script>
+<script src="../static/scripts/libs/bootstrap.min.js"></script>
+<script src="../static/scripts/libs/chart-2.7.3.min.js"></script>
+<script src="../static/scripts/libs/chart-gauge.js"></script>
 <script src="../static/scripts/libs/plugin-detect-0.9.1.min.js"></script>
 
 <!-- block of custom scripts-->
-<script src="../static/scripts/custom/anon_state.js"></script>
+
+
 <!--Marker for Adblock detector-->
 <script src="../static/scripts/custom/advertisement.js"></script>
 <!--WebRTC leaks testing-->
@@ -267,5 +266,11 @@
 <!--WMP detects right there-->
 <script src="../static/scripts/custom/wmd.js"></script>
 
-    {% endblock %}
+<script src="../static/scripts/custom/chart.js"></script>
 
+<script src="../static/scripts/custom/anon_state.js"></script>
+
+
+
+
+    {% endblock %}

@@ -1,4 +1,8 @@
 var State = function () {
+    //number for displaying on
+    //gauge chart
+    this.level = 100;
+
     this.dns = null;
     this.proxies = null;
     this.opened_ports = null;
@@ -14,19 +18,76 @@ var State = function () {
 
     this.init = function () {
         var tmp = document.getElementById('dns2');
-        if (tmp.innerText === 'DNS may be leaking.')
-            this.dns = true;        
+        if (tmp.innerText === 'DNS may be leaking.') {
+            this.dns = true;
+            this.level -= 8;
+        }
 
         tmp = document.getElementById('proxies');
-        if (tmp.innerText === 'True')
+        if (tmp.innerText === 'True') {
             this.proxies = true;
+            this.level -= 8;
+        }
 
         tmp = document.getElementById('ports');
-        if (tmp.innerText.lenght >= 4)
+        if (tmp.innerText.lenght >= 4) {
             this.opened_ports = true;
+            this.level -= 8;
+        }
+
+        tmp = document.getElementById('js');
+        if (tmp.innerHTML == 'JS is really working! Stop it!') {
+            this.js = true;
+            this.level -= 8;
+        }
+
+        tmp = document.getElementById('tor');
+        if (tmp.innerHTML == 'True') {
+            this.tor = true;
+            this.level -= 8;
+        }
+
+        tmp = document.getElementById('fp');
+        if (tmp.innerHTML == 'Flash Player is enabled') {
+            this.flash = true;
+            this.level -= 8;
+        }
+
+        tmp = document.getElementById('rtc');
+        if (tmp.innerHTML.length > 29) {
+            this.webrtc = true;
+            this.level -= 8;
+        }
+
+        tmp = document.getElementById('geo');
+        if (tmp.innerHTML == 'Im tracking you!') {
+            this.location = true;
+            this.level -= 8;
+        }
+        tmp = document.getElementById('sl');
+        if (tmp.innerHTML != 'impossible...') {
+            this.silverlight = true;
+            this.level -= 8;
+        }
+
+        tmp = document.getElementById('loggedIn');
+        if (tmp.childElementCount > 0) {
+            this.loggedin = true;
+            this.level -= 8;
+        }
+
+        tmp = document.getElementById('wmd');
+        if (!tmp.innerHTML.includes('is not detected')) {
+            this.winmediaplayer = true;
+            this.level -= 8;
+        }
 
         //our current state of anonymity level
         this.printState();
+
+        //update meter's data
+        config.data.current = this.level;
+
     }
 
     this.printState = function () {
@@ -52,13 +113,10 @@ var State = function () {
             console.log('loggedin : 1');
         if (this.winmediaplayer == true)
             console.log('winmediaplayer : 1');
-        if (this.spambases == true)
-            console.log('spambases : 1');
+
+        console.log('current level is ' + this.level);
     }
 }
 
 var state = new State();
 state.init();
-
-
-
