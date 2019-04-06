@@ -67,12 +67,13 @@ def home():
         year                = datetime.now().year,
     )
 
+
 @app.route('/contact')
 def contact():
     """Renders the contact page."""
     return render_template(
         'contact.html',
         title='Contact',
-        year=datetime.now().year,
-        message='Your contact page.'
+        year=datetime.now().year, #2019
+        message='SSTU'
     )
